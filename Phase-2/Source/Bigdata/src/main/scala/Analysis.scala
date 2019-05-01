@@ -31,7 +31,7 @@ object Analysis {
       "WHEN text like '%Immigration%' THEN 'IMMIGRATION'" +
       "WHEN text like '%Great%' THEN 'GREAT'" +
 
-      "END AS diseaseType from tweets where text is not null")
+      "END AS Type from tweets where text is not null")
 
     disCat.createOrReplaceTempView("disCat2")
 
