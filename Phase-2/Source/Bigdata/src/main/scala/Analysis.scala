@@ -31,7 +31,7 @@ object Analysis {
       "WHEN text like '%Immigration%' THEN 'IMMIGRATION'" +
       "WHEN text like '%Great%' THEN 'GREAT'" +
 
-      "END AS Type from tweets where text is not null")
+      "END AS trumpType from tweets where text is not null")
 
     disCat.createOrReplaceTempView("disCat2")
 
@@ -82,25 +82,25 @@ object Analysis {
 
       case "2" =>
 
-        val r1 = sqlContext.sql("SELECT UserName,'TRUMP' as diseaseType,count(*) as count FROM disCat2 WHERE diseaseType='TRUMP' " +
+        val r1 = sqlContext.sql("SELECT UserName,'TRUMP' as trumpType,count(*) as count FROM disCat2 WHERE Type='TRUMP' " +
           "group by UserName order by count desc limit 1")
-        val r2 = sqlContext.sql("SELECT UserName,'H-1B' as diseaseType,count(*) as count FROM disCat2 WHERE diseaseType='H-1B' " +
+        val r2 = sqlContext.sql("SELECT UserName,'H-1B' as trumpType,count(*) as count FROM disCat2 WHERE Type='H-1B' " +
           "group by UserName order by count desc limit 1 ")
-        val r3 = sqlContext.sql("SELECT UserName,'ELECTION_2019' as diseaseType,count(*) as count FROM disCat2 WHERE diseaseType='ELECTION_2019' " +
+        val r3 = sqlContext.sql("SELECT UserName,'ELECTION_2019' as trumpType,count(*) as count FROM disCat2 WHERE trumpType='ELECTION_2019' " +
           "group by UserName order by count desc limit 1 ")
-        val r4 = sqlContext.sql("SELECT UserName,'INDIA' as diseaseType,count(*) as count FROM disCat2 WHERE diseaseType='INDIA' " +
+        val r4 = sqlContext.sql("SELECT UserName,'INDIA' as trumpType,count(*) as count FROM disCat2 WHERE trumpType='INDIA' " +
           "group by UserName order by count desc limit 1 ")
-        val r5 = sqlContext.sql("SELECT UserName,'AMERICA' as diseaseType,count(*) as count FROM disCat2 WHERE diseaseType='AMERICA' " +
+        val r5 = sqlContext.sql("SELECT UserName,'AMERICA' as trumpType,count(*) as count FROM disCat2 WHERE trumpType='AMERICA' " +
           "group by UserName order by count desc limit 1 ")
-        val r6 = sqlContext.sql("SELECT UserName,'MEXICO_WALL' as diseaseType,count(*) as count FROM disCat2 WHERE diseaseType='MEXICO_WALL' " +
+        val r6 = sqlContext.sql("SELECT UserName,'MEXICO_WALL' as trumpType,count(*) as count FROM disCat2 WHERE trumpType='MEXICO_WALL' " +
           "group by UserName order by count desc limit 1 ")
-        val r7 = sqlContext.sql("SELECT UserName,'GREAT' as diseaseType,count(*) as count FROM disCat2 WHERE diseaseType='GREAT' " +
+        val r7 = sqlContext.sql("SELECT UserName,'GREAT' as trumpType,count(*) as count FROM disCat2 WHERE trumpType='GREAT' " +
           "group by UserName order by count desc limit 1 ")
-        val r8 = sqlContext.sql("SELECT UserName,'OBAMA' as diseaseType,count(*) as count FROM disCat2 WHERE diseaseType='OBAMA' " +
+        val r8 = sqlContext.sql("SELECT UserName,'OBAMA' as trumpType,count(*) as count FROM disCat2 WHERE trumpType='OBAMA' " +
           "group by UserName order by count desc limit 1 ")
-        val r9 = sqlContext.sql("SELECT UserName,'IMMIGRATION' as diseaseType,count(*) as count FROM disCat2 WHERE diseaseType='IMMIGRATION' " +
+        val r9 = sqlContext.sql("SELECT UserName,'IMMIGRATION' as trumpType,count(*) as count FROM disCat2 WHERE trumpType='IMMIGRATION' " +
           "group by UserName order by count desc limit 1")
-        val r10 = sqlContext.sql("SELECT UserName,'PRESIDENT' as diseaseType,count(*) as count FROM disCat2 WHERE diseaseType='PRESIDENT' " +
+        val r10 = sqlContext.sql("SELECT UserName,'PRESIDENT' as trumpType,count(*) as count FROM disCat2 WHERE trumpType='PRESIDENT' " +
           "group by UserName order by count desc limit 1")
 
         val rdd1 = r1.union(r2).union(r3).union(r4).union(r5).union(r6).union(r7).union(r8).union(r9).union(r10)
@@ -113,7 +113,7 @@ object Analysis {
       //TopTweets.collect().foreach(println)
       //TopTweets.write.format("com.databricks.spark.csv").option("header", "true").save("C:\\Users\\nikky\\Desktop\\pbproject\\TopTweetsBySports.csv")
 
-      /*-----------------------------------Query 3: US states with more popular Diseases-------------------------------------*/
+      /*-----------------------------------Query 3: US states with more popular of Trump-------------------------------------*/
       case "3" =>
         val stateWiseCnt = sqlContext.sql(
           """ SELECT Case
@@ -147,7 +147,7 @@ object Analysis {
             "and text is not null group by US_State,text order by count(text) desc")
 
         println("*****************************************")
-        println("Which country Tweeted More On Which Disease")
+        println("Which country Tweeted More about Trump")
         println("*****************************************")
         stateWiseDataCnt.show();
       //stateSportType2.collect().foreach(println)
@@ -208,7 +208,7 @@ object Analysis {
         println("************************************************")
         query.show()
 
-        /*---------------------Query 7: Popular languages used for tweeting tweets about Diseases--------------------------*/
+        /*---------------------Query 7: Popular languages used for tweeting tweets about Trump--------------------------*/
       case "7" =>
         val langWstCount = sqlContext.sql("SELECT distinct id," +
           "CASE when user.lang LIKE '%en%' then 'English'"+
