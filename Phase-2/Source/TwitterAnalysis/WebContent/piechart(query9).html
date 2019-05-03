@@ -1,0 +1,34 @@
+<html>
+<head>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+        google.charts.load("current", {packages:["corechart"]});
+        google.charts.setOnLoadCallback(drawChart);
+        function drawChart() {
+            var data = google.visualization.arrayToDataTable([
+                ['Language', 'Count'],
+                ['English', 22320], ['Spanish', 829],['French', 108],['German', 36],['Portuguese', 136],['Japanese', 85],['Italian', 25],['Dutch', 17],['Indonesian', 46],
+                ['Swedish', 5],['Arabic', 20],['Russian', 10],['Turkish', 13],['Korean', 41],['Danish', 2],['Finnish', 1],['Chineese', 9],['Polish', 5],['Romanian', 1]
+
+            ]);
+
+            var options = {
+                title: 'Lanuages',
+                legend: 'none',
+                pieSliceText: 'label',
+                slices: {  4: {offset: 0.2},
+                    12: {offset: 0.3},
+                    14: {offset: 0.4},
+                    15: {offset: 0.5},
+                },
+            };
+
+            var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+            chart.draw(data, options);
+        }
+    </script>
+</head>
+<body>
+<div id="piechart" style="width: 900px; height: 500px;"></div>
+</body>
+</html>

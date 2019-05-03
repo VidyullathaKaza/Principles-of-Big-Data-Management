@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title> Analysis on Tweets</title>
+    <script>
+        function query1(){
+            document.getElementById('frame').src='diseasecnt';
+        }
+        function query2(){
+            document.getElementById('frame').src='worldmap(query8).html';
+        }
+		function query3(){
+            document.getElementById('frame').src='pyramid(query2).html';
+        }
+		function query4(){
+            document.getElementById('frame').src='wordcloud';
+        }
+		function query5(){
+            document.getElementById('frame').src='cuisine';
+        }
+        function query7(){
+        	document.getElementById('frame').src='piechart(query7).html';
+        }
+        function query10(){
+        	document.getElementById('frame').src='pointChart.html';
+        }
+        function query8(){
+        	document.getElementById('frame').src='bubblechart(query6).html';
+        }
+        function query6(){
+        	document.getElementById('frame').src='piechart(query9).html';
+        }
+        function query9(){
+        	document.getElementById('frame').src='bubblechart(query1).html';
+        }
+    </script>
+    <style type="text/css">
+    .abc {
+    background-color: #F0E68C;
+    border: none;
+    color: black;
+    padding: 15px 0px;
+    text-align: center;
+    text-decoration: none;
+    border-radius:8px;
+    display: inline-block;
+    font-size: 16px;
+    }
+    
+    .ab{
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    z-index: 0;
+    background-image: url('bg.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    }
+   </style>
+</head>
+
+<body class="ab">
+<div align=center>
+<h1 style="margin-bottom: 10px; text-align: center; font-family:calibri;font-size:50px;color:white;font-style:italic;"> Analysis on Trump Tweets</h2>
+<!--<div style="top:100px; left:45px;">-->
+<button onclick="query1()" style="width:150px;" class="abc">Popular Tweets</button>
+<button onclick="query2()" style="width:150px;" class="abc">Famous Locations</button>
+<button onclick="query3()" style="width:150px;" class="abc">Top 10 Users</button>
+<button onclick="query4()" style="width:150px;" class="abc">Popular Words</button>
+<button onclick="query5()" style="width:150px;" class="abc">Popular Day</button>
+<button onclick="query6()" style="width:150px;" class="abc">Languages Used</button>
+<button onclick="query7()" style="width:150px;" class="abc">Verified vs Unverified</button>
+<button onclick="query8()" style="width:150px;" class="abc">Sensitive tweets</button>
+<button onclick="query9()" style="width:150px;" class="abc">Most retweet count</button>
+<button onclick="query10()" style="width:150px;" class="abc">Users created in time range</button>
+<br><br>
+<div style="left:30px;">
+<iframe id='frame' src='' style="height: 750px; width:1000px;background-color:white"></iframe></div>
+</div>
+</body>
+</html>
