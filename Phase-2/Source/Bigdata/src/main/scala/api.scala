@@ -9,10 +9,10 @@ import org.apache.spark.{SparkConf, SparkContext}
 
 object api {
 
-  val accessToken = "779311765163171844-RCUoOhu2R53ugDk3O8xTX50rgi2zj4o"
-  val accessSecret = "y9Evdnwz1tfI43fIyun18OQOxgt6HQjWh6g3Gb99ExwOI"
-  val consumerKey = "xMJiyum9ZLKuGeZDPl1uL3qeU"
-  val consumerSecret = "6df8h8k2O7AwBJgYREWwTfwB1MFXVBuUm4PttByrGiRKDj6bI5"
+  val accessToken = "1094675114891845632-TEn7tI11ZEyshO4pkP5W7dw6KySWHJ"
+  val accessSecret = "8T1esyezmrUcGmncQ9X6eGN51lYodG1cuJjPm4tIi0pRN"
+  val consumerKey = "r8BqAgfNYXSVnlElPuAlfRCVT"
+  val consumerSecret = "W2tW9j6SmKG59qn2xMwP6ojhBe6g3DzKk4CmmRQtOl3VE1RxzA"
 
 
   def main(args: Array[String]) {
@@ -29,7 +29,7 @@ object api {
     val sqlContext = new org.apache.spark.sql.SQLContext(sc)
 
     // Reads json file and stores in a variable
-    val tweet = sqlContext.read.json("/home/koushik/Desktop/Teju/Disease_Tweets.json")
+    val tweet = sqlContext.read.json("/home/koushik/Desktop/vidyu/tweets.json")
 
     //To register tweets data as a table
     tweet.createOrReplaceTempView("tweets")
